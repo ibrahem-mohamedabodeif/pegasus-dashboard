@@ -51,7 +51,7 @@ export default function Products() {
     },
   });
 
-  const currentProductes = useMemo(() => {
+  const currentProducts = useMemo(() => {
     const indexOfLastProduct = currentPage * itemsPerPage;
     const indexOfFirstProduct = indexOfLastProduct - itemsPerPage;
     return products?.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -73,7 +73,7 @@ export default function Products() {
         </div>
       )}
 
-      <div className="fixed top-0 max-sm:top-16 max-sm:w-11/12  w-10/12 z-10 flex justify-between mr-4 mt-8 mb-12 items-center max-sm:mt-6 max-sm:ml-6 max-sm:mr-4">
+      <div className="fixed top-0 max-sm:top-16 max-sm:w-11/12 w-10/12 z-10 flex justify-between mr-4 mt-8 mb-12 items-center max-sm:mt-6 max-sm:ml-6 max-sm:mr-4">
         <h1 className="capitalize text-3xl font-medium">Products</h1>
         <Link to="newproduct" onClick={handleOpen}>
           <button className="capitalize font-medium border rounded-lg pt-2 pb-3 pl-4 pr-4 max-sm:pl-2 max-sm:pt-1 max-sm:pb-2 max-sm:pr-2 bg-slate-700 text-white max-sm:text-[12px]">
@@ -100,7 +100,7 @@ export default function Products() {
             </tr>
           </thead>
           <tbody>
-            {currentProductes?.map((product) => (
+            {currentProducts?.map((product) => (
               <tr key={product.id} className="border-b-2">
                 <td className="border-r-2 pl-2">
                   <img src={product.image} className="w-20" alt="Product" />
@@ -130,7 +130,7 @@ export default function Products() {
             ))}
           </tbody>
         </table>
-        <div className=" flex justify-center fixed bottom-20  left-1/2 -translate-x-1/2 max-sm:bottom-5  w-full ">
+        <div className="flex justify-center fixed bottom-20 left-1/2 -translate-x-1/2 max-sm:bottom-5 w-full">
           <Pagination
             count={Math.ceil(products.length / itemsPerPage)}
             page={currentPage}
