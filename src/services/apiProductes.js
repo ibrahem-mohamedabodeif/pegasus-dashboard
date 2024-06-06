@@ -15,7 +15,6 @@ export async function deleteProduct(id) {
   const { error } = await supabase.from("productes").delete().eq("id", id);
 
   if (error) {
-    console.log(error);
     throw new Error("productes can not loaded");
   }
 }
@@ -32,7 +31,6 @@ export async function newProducte(newProducte) {
     .select();
 
   if (error) {
-    console.log(error);
     throw new Error("productes can not loaded");
   }
 
@@ -62,7 +60,6 @@ export async function editeProduct(editedProduct, id) {
     .single();
 
   if (error) {
-    console.log(error);
     throw new Error("products can not loaded");
   }
   return data;

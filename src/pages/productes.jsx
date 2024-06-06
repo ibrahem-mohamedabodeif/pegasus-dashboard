@@ -46,7 +46,7 @@ export default function Products() {
   const { isPending, mutate } = useMutation({
     mutationFn: (id) => deleteProduct(id),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["products"] });
+      queryClient.invalidateQueries(["products"]);
       toast.success("Product deleted successfully");
     },
   });

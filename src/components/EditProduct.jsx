@@ -4,6 +4,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { editeProduct } from "../services/apiProductes";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 
 export default function EditProduct({ productToEdite = {}, open }) {
   const { id: editeId, ...editeValues } = productToEdite;
@@ -17,15 +18,17 @@ export default function EditProduct({ productToEdite = {}, open }) {
   const { mutate, isPending } = useMutation({
     mutationFn: ({ editedData, id }) => editeProduct(editedData, id),
     onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["productes"],
-      });
+      queryClient.invalidateQueries(["productes"]);
       toast.success("product is edited successfully");
       reset();
       open(false);
     },
-    onError: (error) => toast.error(error),
+    onError: (error) => toast.error(error.message || "An error occurred"),
   });
+
+  useEffect(() => {
+    reset(editeValues);
+  }, [productToEdite, reset, editeValues]);
 
   const OnSubmit = (data) => {
     const image = typeof data.image === "string" ? data.image : data.image[0];
