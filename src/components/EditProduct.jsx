@@ -1,20 +1,17 @@
 import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useForm, useWatch } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { editeProduct } from "../services/apiProductes";
 import toast from "react-hot-toast";
 
 export default function EditProduct({ productToEdit, open }) {
-  // If productToEdite is undefined or null, set default empty object
   productToEdit = productToEdit || {};
   const { id: editeId, ...editeValues } = productToEdit;
 
-  const { register, handleSubmit, reset, control } = useForm({
+  const { register, handleSubmit, reset } = useForm({
     defaultValues: editeValues,
   });
-
-  const watchedFields = useWatch({ control });
 
   const queryClient = useQueryClient();
 
@@ -23,8 +20,8 @@ export default function EditProduct({ productToEdit, open }) {
     onSuccess: () => {
       queryClient.invalidateQueries(["productes"]);
       toast.success("Product edited successfully");
-      reset(); // Reset form after successful mutation
-      open(false); // Close the form/modal
+      reset();
+      open(false);
     },
     onError: (error) => {
       toast.error("Error editing product: " + error.message);
@@ -36,98 +33,94 @@ export default function EditProduct({ productToEdit, open }) {
     mutate({ editedData: { ...data, image }, id: editeId });
   };
 
-  // Log the productToEdite for debugging
-  console.log("Product to Edit:", productToEdit);
-  console.log("Watched Fields:", watchedFields);
-
   return (
     <div>
       <div>
-        <h1 className="text-xl mb-10">Edit Product</h1>
+        <h1 className="text-2xl font-semibold mb-10">Edit Product</h1>
       </div>
       <form
         className="flex mb-5 max-sm:flex-col max-sm:gap-5 max-sm:divide-y-2 max-sm:items-center max-sm:justify-center"
         onSubmit={handleSubmit(onSubmit)}
       >
         <div className="flex flex-col">
-          <label>Image</label>
+          <label className="font-medium text-center text-lg">Image</label>
           <input
             disabled={isLoading}
             type="file"
             name="image"
-            className="w-40 mt-4 bg-inherit border border-black"
+            className="w-40 mt-4 bg-inherit mr-6"
             {...register("image")}
           />
         </div>
         <div className="flex flex-col">
-          <label>Title</label>
+          <label className="font-medium text-center text-lg">Title</label>
           <input
             disabled={isLoading}
             type="text"
-            className="w-40 mt-4 mr-6 p-1 bg-inherit border border-black"
+            className="w-40 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black max-sm:w-56 text-center "
             {...register("title")}
           />
         </div>
         <div className="flex flex-col">
-          <label>Sub-Title</label>
+          <label className="font-medium text-center text-lg">Sub-Title</label>
           <input
             disabled={isLoading}
             type="text"
-            className="w-40 mt-4 mr-6 p-1 bg-inherit border border-black"
+            className="w-40 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black max-sm:w-56 text-center "
             {...register("subTitle")}
           />
         </div>
         <div className="flex flex-col">
-          <label>Description</label>
-          <input
+          <label className="font-medium">Description</label>
+          <textarea
             disabled={isLoading}
             type="text"
-            className="w-60 mt-4 mr-6 p-1 bg-inherit border border-black"
+            className="w-60 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black text-center"
             {...register("description")}
           />
         </div>
         <div className="flex flex-col">
-          <label>Category</label>
+          <label className="font-medium text-center text-lg">Category</label>
           <input
             disabled={isLoading}
             type="text"
-            className="w-36 mt-4 mr-6 p-1 bg-inherit border border-black"
+            className="w-36 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black max-sm:w-56 text-center"
             {...register("category")}
           />
         </div>
         <div className="flex flex-col">
-          <label>Price</label>
+          <label className="font-medium text-lg text-center">Price</label>
           <input
             disabled={isLoading}
             type="number"
-            className="w-24 mt-4 mr-6 p-1 bg-inherit border border-black"
+            className="w-24 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black text-center"
             {...register("price")}
           />
         </div>
         <div className="flex flex-col">
-          <label>Sale</label>
+          <label className="font-medium text-lg text-center">Sale</label>
           <input
             disabled={isLoading}
             type="number"
-            className="w-24 mt-4 mr-6 p-1 bg-inherit border border-black"
+            className="w-24 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black text-center"
             {...register("sale")}
           />
         </div>
         <div className="flex flex-col">
-          <label>New Arrival</label>
+          <label className="font-medium text-lg text-center">New Arrival</label>
           <input
             disabled={isLoading}
             type="text"
-            className="w-24 mt-4 mr-6 p-1 bg-inherit border border-black"
+            className="w-24 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black text-center"
             {...register("newArrival")}
           />
         </div>
         <div className="flex flex-col">
-          <label>Quantity</label>
+          <label className="font-medium text-lg text-center">Quantity</label>
           <input
             disabled={isLoading}
             type="number"
-            className="w-24 mt-4 mr-6 p-1 bg-inherit border border-black"
+            className="w-24 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black text-center"
             {...register("quantity")}
           />
         </div>

@@ -42,15 +42,25 @@ export async function newProducte(newProducte) {
 }
 
 export async function editeProduct(editedProduct, id) {
-  const hasImagePath = editedProduct.image?.startsWith?.(supabaseUrl);
+  let imagePath = editedProduct.image;
+  if (
+    imagePath &&
+    !(typeof imagePath === "string" && imagePath.startsWith(supabaseUrl))
+  ) {
+    const imageName = `${Math.random()}-${editedProduct.image.name}`.replaceAll(
+      "/",
+      ""
+    );
+    const { data: uploadData, error: uploadError } = await supabase.storage
+      .from("images")
+      .upload(imageName, editedProduct.image);
 
-  const imageName = `${Math.random()}-${editedProduct.image.name}`.replaceAll(
-    "/",
-    ""
-  );
-  const imagePath = hasImagePath
-    ? editedProduct.image
-    : `${supabaseUrl}/storage/v1/object/public/images/${imageName}`;
+    if (uploadError) {
+      throw new Error("Failed to upload image");
+    }
+
+    imagePath = `${supabaseUrl}/storage/v1/object/public/images/${imageName}`;
+  }
 
   const { data, error } = await supabase
     .from("productes")
@@ -60,7 +70,8 @@ export async function editeProduct(editedProduct, id) {
     .single();
 
   if (error) {
-    throw new Error("products can not loaded");
+    throw new Error("Products cannot be updated");
   }
+
   return data;
 }

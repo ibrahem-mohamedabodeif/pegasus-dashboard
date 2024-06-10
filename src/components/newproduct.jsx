@@ -57,7 +57,7 @@ export default function NewProduct() {
             <input
               type="text"
               name="title"
-              className=" bg-inherit border max-sm:w-28 border-black"
+              className=" bg-inherit border pl-2 rounded-md max-sm:w-28 border-black"
               {...register("title")}
               required
             />
@@ -67,17 +67,16 @@ export default function NewProduct() {
             <input
               type="text"
               name="subTitle"
-              className=" bg-inherit border border-black max-sm:w-28 "
+              className=" bg-inherit border pl-2 rounded-md border-black max-sm:w-28 "
               {...register("subTitle")}
               required
             />
           </div>
           <div className="flex justify-between max-sm:space-x-5">
             <label className="text-xl ">description</label>
-            <input
-              type="text"
+            <textarea
               name="description"
-              className=" bg-inherit border max-sm:w-28 border-black"
+              className=" bg-inherit border pl-2 rounded-md w-[180px] max-sm:w-28 border-black "
               {...register("description", {
                 required: true,
               })}
@@ -88,7 +87,7 @@ export default function NewProduct() {
             <input
               type="text"
               name="category"
-              className=" bg-inherit border border-black max-sm:w-28 "
+              className=" bg-inherit border pl-2 rounded-md border-black max-sm:w-28 "
               {...register("category")}
               required
             />
@@ -99,7 +98,7 @@ export default function NewProduct() {
               type="number"
               name="price"
               defaultValue={0}
-              className=" bg-inherit border max-sm:w-28 border-black"
+              className=" bg-inherit border pl-2 rounded-md max-sm:w-28 border-black"
               {...register("price")}
               required
             />
@@ -110,7 +109,7 @@ export default function NewProduct() {
               type="number"
               name="sale"
               defaultValue={0}
-              className=" bg-inherit border max-sm:w-28 border-black"
+              className=" bg-inherit border pl-2 rounded-md max-sm:w-28 border-black"
               {...register("sale")}
               required
             />
@@ -121,7 +120,7 @@ export default function NewProduct() {
               type="text"
               name="newArrival"
               defaultValue="false"
-              className=" bg-inherit border max-sm:w-28 border-black"
+              className=" bg-inherit border pl-2 rounded-md max-sm:w-28 border-black"
               {...register("newArrival")}
               required
             />
@@ -132,7 +131,7 @@ export default function NewProduct() {
               type="number"
               name="quantity"
               defaultValue={0}
-              className=" bg-inherit border max-sm:w-28 border-black"
+              className=" bg-inherit border rounded-md pl-2 max-sm:w-28 border-black"
               {...register("quantity")}
               required
             />
