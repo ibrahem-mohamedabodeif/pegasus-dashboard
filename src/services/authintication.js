@@ -5,7 +5,7 @@ export async function LogIn({ email, password }) {
     password,
   });
   if (error) {
-    throw new Error("Login failed.");
+    throw new Error(error.message);
   }
   return data;
 }

@@ -11,7 +11,8 @@ export default function ProtectedRoutes({ children }) {
     queryFn: getCurrentUser,
   });
 
-  const isAuth = data?.role === "authenticated";
+  const isAuth =
+    data?.role === "authenticated" && data.user_metadata.role === "admin";
 
   //2-if there is no auth user navigate to sign page
 

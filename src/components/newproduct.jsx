@@ -1,5 +1,3 @@
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useOutletContext } from "../pages/productes";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
@@ -26,24 +24,25 @@ export default function NewProduct() {
 
   function onSubmit(data) {
     mutate({ ...data, image: data.image[0] });
-    // console.log(data);
   }
 
   return (
-    <div className="">
-      <FontAwesomeIcon
-        icon={faXmark}
-        className=" border p-2 bg-red-700"
-        onClick={handleClose}
-      />
-
-      <div className="flex justify-between  mr-4 mt-8 mb-12 items-center">
-        <h1 className=" capitalize text-xl font-medium  ">new producte</h1>
+    <div className="absolute -top-16 left-1/4 w-[500px] px-5 py-3 z-10 rounded-lg bg-[#2a2d2b]">
+      <div className="flex justify-between items-center mb-8 border-b pb-4 border-[#818181]">
+        <h1 className="text-white  text-xl capitalize font-semibold">
+          New Product
+        </h1>
+        <button
+          onClick={() => handleClose()}
+          className="text-2xl text-white border border-[#818181] pl-3 pr-3 pb-1 rounded-lg"
+        >
+          x
+        </button>
       </div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex flex-col gap-7 justify-center">
           <div className="flex justify-between max-sm:space-x-5 ">
-            <label className="text-xl ">image</label>
+            <label className="text-xl text-[#818181]">image</label>
             <input
               type="file"
               className="max-sm:w-28 w-48 "
@@ -53,85 +52,75 @@ export default function NewProduct() {
             />
           </div>
           <div className="flex justify-between max-sm:space-x-5">
-            <label className="text-xl ">title</label>
+            <label className="text-xl text-[#818181]">title</label>
             <input
               type="text"
               name="title"
-              className=" bg-inherit border pl-2 rounded-md max-sm:w-28 border-black"
+              className="text-white bg-inherit border pl-2 rounded-md max-sm:w-28 border-[#818181] outline-none"
               {...register("title")}
               required
             />
           </div>
           <div className="flex justify-between max-sm:space-x-5">
-            <label className="text-xl ">sub-title</label>
-            <input
-              type="text"
-              name="subTitle"
-              className=" bg-inherit border pl-2 rounded-md border-black max-sm:w-28 "
-              {...register("subTitle")}
-              required
-            />
-          </div>
-          <div className="flex justify-between max-sm:space-x-5">
-            <label className="text-xl ">description</label>
+            <label className="text-xl text-[#818181]">description</label>
             <textarea
               name="description"
-              className=" bg-inherit border pl-2 rounded-md w-[180px] max-sm:w-28 border-black "
+              className="text-white bg-inherit border pl-2 rounded-md w-48 max-sm:w-28 outline-none border-[#818181]"
               {...register("description", {
                 required: true,
               })}
             />
           </div>
           <div className="flex justify-between max-sm:space-x-5">
-            <label className="text-xl ">category</label>
+            <label className="text-xl text-[#818181]">category</label>
             <input
               type="text"
               name="category"
-              className=" bg-inherit border pl-2 rounded-md border-black max-sm:w-28 "
+              className="text-white bg-inherit border pl-2 rounded-md border-[#818181] outline-none max-sm:w-28 "
               {...register("category")}
               required
             />
           </div>
           <div className="flex justify-between max-sm:space-x-5">
-            <label className="text-xl ">price</label>
+            <label className="text-xl text-[#818181]">price</label>
             <input
               type="number"
               name="price"
               defaultValue={0}
-              className=" bg-inherit border pl-2 rounded-md max-sm:w-28 border-black"
+              className="text-white bg-inherit border pl-2 rounded-md max-sm:w-28 border-[#818181] outline-none"
               {...register("price")}
               required
             />
           </div>
           <div className="flex justify-between max-sm:space-x-5">
-            <label className="text-xl ">sale</label>
+            <label className="text-xl text-[#818181]">sale %</label>
             <input
               type="number"
               name="sale"
               defaultValue={0}
-              className=" bg-inherit border pl-2 rounded-md max-sm:w-28 border-black"
+              className="text-white bg-inherit border pl-2 rounded-md max-sm:w-28 border-[#818181] outline-none"
               {...register("sale")}
               required
             />
           </div>
           <div className="flex justify-between max-sm:space-x-5">
-            <label className="text-xl ">new Arrival</label>
+            <label className="text-xl text-[#818181]">new Arrival</label>
             <input
               type="text"
               name="newArrival"
               defaultValue="false"
-              className=" bg-inherit border pl-2 rounded-md max-sm:w-28 border-black"
+              className="text-white bg-inherit border pl-2 rounded-md max-sm:w-28 border-[#818181] outline-none"
               {...register("newArrival")}
               required
             />
           </div>
           <div className="flex justify-between max-sm:space-x-5">
-            <label className="text-xl ">quantity</label>
+            <label className="text-xl text-[#818181]">quantity</label>
             <input
               type="number"
               name="quantity"
               defaultValue={0}
-              className=" bg-inherit border rounded-md pl-2 max-sm:w-28 border-black"
+              className="text-white bg-inherit border rounded-md pl-2 max-sm:w-28 border-[#818181] outline-none"
               {...register("quantity")}
               required
             />
@@ -139,7 +128,7 @@ export default function NewProduct() {
         </div>
         <button
           disabled={isPending}
-          className=" block w-full mt-8 capitalize font-medium text-lg border rounded-lg pt-2 pb-3 pl-4 pr-4 bg-slate-800 text-stone-100 "
+          className="block w-full mt-8 capitalize font-medium text-lg border rounded-lg pt-2 pb-3 pl-4 pr-4 bg-[#65c51a] text-white"
         >
           add new
         </button>

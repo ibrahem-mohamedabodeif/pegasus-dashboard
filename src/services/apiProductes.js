@@ -75,3 +75,13 @@ export async function editeProduct(editedProduct, id) {
 
   return data;
 }
+
+export async function getCustomers() {
+  const { data, error } = await supabase.from("users").select("*");
+
+  if (error) {
+    throw new Error("Cusomers can not loaded");
+  }
+
+  return data;
+}

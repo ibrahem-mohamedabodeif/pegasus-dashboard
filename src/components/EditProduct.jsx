@@ -1,5 +1,3 @@
-import { faCheck, faXmark } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { editeProduct } from "../services/apiProductes";
@@ -34,107 +32,99 @@ export default function EditProduct({ productToEdit, open }) {
   };
 
   return (
-    <div>
-      <div>
-        <h1 className="text-2xl font-semibold mb-10">Edit Product</h1>
+    <div className="absolute -top-20 left-1/4 w-[500px] px-5 py-3 z-10 rounded-lg bg-[#2a2d2b]">
+      <div className="flex justify-between items-center mb-8 border-b pb-4 border-[#818181]">
+        <h1 className="text-white  text-xl capitalize font-semibold">
+          Edit Product
+        </h1>
+        <button
+          onClick={() => open(false)}
+          className="text-2xl text-white border border-[#818181] pl-3 pr-3 pb-1 rounded-lg"
+        >
+          x
+        </button>
       </div>
-      <form
-        className="flex mb-5 max-sm:flex-col max-sm:gap-5 max-sm:divide-y-2 max-sm:items-center max-sm:justify-center"
-        onSubmit={handleSubmit(onSubmit)}
-      >
-        <div className="flex flex-col">
-          <label className="font-medium text-center text-lg">Image</label>
-          <input
-            disabled={isLoading}
-            type="file"
-            name="image"
-            className="w-40 mt-4 bg-inherit mr-6"
-            {...register("image")}
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="font-medium text-center text-lg">Title</label>
-          <input
-            disabled={isLoading}
-            type="text"
-            className="w-40 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black max-sm:w-56 text-center "
-            {...register("title")}
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="font-medium text-center text-lg">Sub-Title</label>
-          <input
-            disabled={isLoading}
-            type="text"
-            className="w-40 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black max-sm:w-56 text-center "
-            {...register("subTitle")}
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="font-medium">Description</label>
-          <textarea
-            disabled={isLoading}
-            type="text"
-            className="w-60 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black text-center"
-            {...register("description")}
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="font-medium text-center text-lg">Category</label>
-          <input
-            disabled={isLoading}
-            type="text"
-            className="w-36 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black max-sm:w-56 text-center"
-            {...register("category")}
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="font-medium text-lg text-center">Price</label>
-          <input
-            disabled={isLoading}
-            type="number"
-            className="w-24 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black text-center"
-            {...register("price")}
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="font-medium text-lg text-center">Sale</label>
-          <input
-            disabled={isLoading}
-            type="number"
-            className="w-24 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black text-center"
-            {...register("sale")}
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="font-medium text-lg text-center">New Arrival</label>
-          <input
-            disabled={isLoading}
-            type="text"
-            className="w-24 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black text-center"
-            {...register("newArrival")}
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="font-medium text-lg text-center">Quantity</label>
-          <input
-            disabled={isLoading}
-            type="number"
-            className="w-24 mt-4 mr-6 p-1 bg-inherit rounded-lg border border-black text-center"
-            {...register("quantity")}
-          />
-        </div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex flex-col gap-7 justify-center">
+          <div className="flex justify-between max-sm:space-x-5 ">
+            <label className="text-xl text-[#818181]">Image</label>
+            <input
+              disabled={isLoading}
+              type="file"
+              name="image"
+              className="w-40 mt-4 bg-inherit mr-6"
+              {...register("image")}
+            />
+          </div>
+          <div className="flex justify-between max-sm:space-x-5 ">
+            <label className="text-xl text-[#818181]">Title</label>
+            <input
+              disabled={isLoading}
+              type="text"
+              className="text-white bg-inherit border pl-2 rounded-md max-sm:w-28 border-[#818181] outline-none"
+              {...register("title")}
+            />
+          </div>
+          <div className="flex justify-between max-sm:space-x-5 ">
+            <label className="text-xl text-[#818181]">Description</label>
+            <textarea
+              disabled={isLoading}
+              type="text"
+              className="text-white bg-inherit border pl-2 rounded-md w-48 max-sm:w-28 outline-none border-[#818181]"
+              {...register("description")}
+            />
+          </div>
+          <div className="flex justify-between max-sm:space-x-5 ">
+            <label className="text-xl text-[#818181]">Category</label>
+            <input
+              disabled={isLoading}
+              type="text"
+              className="text-white bg-inherit border pl-2 rounded-md max-sm:w-28 border-[#818181] outline-none"
+              {...register("category")}
+            />
+          </div>
+          <div className="flex justify-between max-sm:space-x-5 ">
+            <label className="text-xl text-[#818181]">Price</label>
+            <input
+              disabled={isLoading}
+              type="number"
+              className="text-white bg-inherit border pl-2 rounded-md max-sm:w-28 border-[#818181] outline-none"
+              {...register("price")}
+            />
+          </div>
+          <div className="flex justify-between max-sm:space-x-5 ">
+            <label className="text-xl text-[#818181]">Sale %</label>
+            <input
+              disabled={isLoading}
+              type="number"
+              className="text-white bg-inherit border pl-2 rounded-md max-sm:w-28 border-[#818181] outline-none"
+              {...register("sale")}
+            />
+          </div>
+          <div className="flex justify-between max-sm:space-x-5 ">
+            <label className="text-xl text-[#818181]">New Arrival</label>
+            <input
+              disabled={isLoading}
+              type="text"
+              className="text-white bg-inherit border pl-2 rounded-md max-sm:w-28 border-[#818181] outline-none"
+              {...register("newArrival")}
+            />
+          </div>
+          <div className="flex justify-between max-sm:space-x-5 ">
+            <label className="text-xl text-[#818181]">Quantity</label>
+            <input
+              disabled={isLoading}
+              type="number"
+              className="text-white bg-inherit border pl-2 rounded-md max-sm:w-28 border-[#818181] outline-none"
+              {...register("quantity")}
+            />
+          </div>
 
-        <div className="flex gap-6 mt-8 pr-4">
-          <button type="submit" disabled={isLoading}>
-            <FontAwesomeIcon icon={faCheck} />
-          </button>
           <button
-            type="button"
-            onClick={() => open(false)}
             disabled={isLoading}
+            className="block w-full capitalize font-medium text-lg border rounded-lg pt-2 pb-3 pl-4 pr-4 bg-[#65c51a] text-white"
           >
-            <FontAwesomeIcon icon={faXmark} />
+            Edite
           </button>
         </div>
       </form>
