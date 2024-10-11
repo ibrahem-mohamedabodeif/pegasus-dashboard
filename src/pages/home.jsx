@@ -167,7 +167,9 @@ export default function Home() {
           {/* Adjust positioning and sizing for "Show All" link on smaller screens */}
           <Link
             to={"/dashboard/orders"}
-            className="absolute bottom-2 right-5 text-stone-600 hover:text-white cursor-pointer text-sm sm:text-lg"
+            className={`absolute bottom-2 right-5 text-stone-600 hover:text-white cursor-pointer text-sm sm:text-lg ${
+              recentOrders?.length === 0 ? "hidden" : ""
+            }`}
           >
             Show All ...
           </Link>

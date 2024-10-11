@@ -36,7 +36,7 @@ export default function SideBar() {
           </button>
 
           {open && (
-            <div className="absolute w-36 rounded-xl top-10 -left-5 flex flex-col border p-4 gap-y-5 shadow-lg bg-white z-50">
+            <div className="absolute w-36 rounded-xl top-10 -left-5 flex flex-col border p-4 gap-y-5 shadow-lg bg-[#2a2d2b] z-50 text-white border-transparent">
               <Link to="/dashboard/home" onClick={handleOpen}>
                 <span className="font-medium">Dashboard</span>
               </Link>
@@ -46,7 +46,7 @@ export default function SideBar() {
               <Link to="/dashboard/orders" onClick={handleOpen}>
                 <span className="font-medium">Orders</span>
               </Link>
-              <Link to="/dashboard/orders" onClick={handleOpen}>
+              <Link to="/dashboard/customers" onClick={handleOpen}>
                 <span className="font-medium">Customers</span>
               </Link>
             </div>

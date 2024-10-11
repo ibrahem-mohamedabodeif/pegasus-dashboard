@@ -75,10 +75,10 @@ export default function Orders() {
 
   return (
     <div className="container max-sm:ml-4">
-      <div className="border-b-2 border-[#2a2d2b] fixed top-0 max-sm:top-16 px-10 max-sm:px-0 pb-5 w-full flex justify-between mr-4 mt-10 mb-12 items-center">
+      <div className="bg-black border-b-2 border-[#2a2d2b] fixed top-0 max-sm:top-12 px-10 max-sm:px-0 pb-5 w-full flex justify-between mr-4 mt-10 mb-12 items-center">
         <h1 className=" capitalize text-3xl font-medium text-white">orders</h1>
       </div>
-      <div className="mt-32 px-10 max-sm:px-5">
+      <div className="mt-32 max-sm:mt-24 px-10 max-sm:px-2">
         <OrderFilters onFilterChange={handleFilterChange} />
       </div>
       <div className="overflow-auto h-[calc(100vh-12rem)] max-sm:pb-10 px-10 max-sm:pr-5 max-sm:pl-0">
@@ -145,7 +145,7 @@ export default function Orders() {
             ))}
           </tbody>
         </table>
-        <div className="flex text-white justify-center fixed bottom-0 left-1/2 -translate-x-1/2 max-sm:bottom-0 w-full">
+        <div className="flex text-white justify-center fixed bottom-0 left-1/2 -translate-x-1/2 md:left-2/3 max-sm:bottom-0 w-full">
           <Pagination
             count={Math.ceil(orders.length / itemsPerPage)}
             page={currentPage}
@@ -165,7 +165,7 @@ export default function Orders() {
         </div>
       </div>
       {open && order && (
-        <div className="absolute top-10 left-1/2 -translate-x-1/2 w-96 rounded-lg bg-[#2a2d2b]">
+        <div className="absolute top-10 max-sm:top-24 md:top-40 left-1/2 -translate-x-1/2 w-96 max-sm:w-80 rounded-lg bg-[#2a2d2b]">
           <div className="flex justify-between items-center mx-5 mt-5">
             <h1 className="text-white  text-xl capitalize font-semibold">
               order<span> #{order.id}</span>

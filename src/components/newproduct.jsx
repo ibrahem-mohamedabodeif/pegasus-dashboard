@@ -27,7 +27,7 @@ export default function NewProduct() {
   }
 
   return (
-    <div className="absolute -top-16 left-1/4 w-[500px] px-5 py-3 z-10 rounded-lg bg-[#2a2d2b]">
+    <div className="absolute -top-16 left-1/4 w-[500px] max-sm:w-96 px-5 py-3 z-10 rounded-lg bg-[#2a2d2b]">
       <div className="flex justify-between items-center mb-8 border-b pb-4 border-[#818181]">
         <h1 className="text-white  text-xl capitalize font-semibold">
           New Product

@@ -71,7 +71,7 @@ export default function Products() {
         </OutletContext.Provider>
       )}
 
-      <div className="border-b-2 border-[#2a2d2b] fixed top-0 max-sm:top-16 max-sm:w-11/12 md:w-8/12 w-10/12 lg:w-10/12 px-10 max-sm:px-0 flex justify-between mt-5 pb-5 items-center max-sm:mt-6 max-sm:ml-6 max-sm:mr-4">
+      <div className="bg-black border-b-2 border-[#2a2d2b] fixed top-0 max-sm:top-16 max-sm:w-11/12 md:w-8/12 w-10/12 lg:w-10/12 px-10 max-sm:px-0 flex justify-between mt-5 pb-5 items-center max-sm:mt-6 max-sm:ml-6 max-sm:mr-4">
         <h1 className="capitalize text-3xl max-sm:text-xl  font-medium text-white">
           Products
         </h1>
@@ -84,7 +84,7 @@ export default function Products() {
       <div className="flex flex-col mt-28 max-sm:mt-20">
         <div className="mx-10 max-sm:mx-2">
           <div className="min-w-full inline-block align-middle">
-            <div>
+            <div className="pb-10">
               <table className="table-auto min-w-full rounded-xl">
                 <thead>
                   <tr>
@@ -149,7 +149,7 @@ export default function Products() {
                         {product.price} $
                       </td>
                       <td className="p-5 text-sm font-medium text-white text-center">
-                        {product.sale || "-"} %
+                        <div className="min-w-20">{product.sale || "-"} %</div>
                       </td>
                       <td className="p-5 text-sm font-medium text-white text-center">
                         {product.newArrival}
@@ -176,7 +176,7 @@ export default function Products() {
                   ))}
                 </tbody>
               </table>
-              <div className="flex text-white justify-center fixed bottom-0 lg:left-1/2 md:left-3/4 -translate-x-1/2 max-sm:bottom-0 w-full">
+              <div className="flex text-white justify-center fixed bottom-0 left-1/2 md:left-2/3 -translate-x-1/2 max-sm:bottom-0 w-full">
                 <Pagination
                   count={Math.ceil(products.length / itemsPerPage)}
                   page={currentPage}

@@ -26,7 +26,7 @@ export default function Customers() {
 
   return (
     <div className="container max-sm:ml-4 ">
-      <div className="border-b-2 border-[#2a2d2b] fixed top-0 max-sm:top-16 px-10 max-sm:px-0 pb-5 w-full flex justify-between mr-4 mt-10 mb-12 items-center">
+      <div className="bg-black border-b-2 border-[#2a2d2b] fixed top-0 max-sm:top-16 px-10 max-sm:px-0 pb-5 w-full flex justify-between mr-4 mt-10 mb-12 items-center">
         <h1 className=" capitalize text-3xl max-sm:text-2xl font-medium text-white">
           customers
         </h1>
